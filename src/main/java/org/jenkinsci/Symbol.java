@@ -1,13 +1,11 @@
 package org.jenkinsci;
 
-import org.jvnet.hudson.annotation_indexer.Indexed;
-
 import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
+import org.jvnet.hudson.annotation_indexer.Indexed;
 
 /**
  * Defines a unique identifier to refer to an extension.
@@ -25,7 +23,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  *
  * <p>
  * Because this is a short symbol, avoiding a collision requires a coordination.
- * We will scan the list of known symbol names in the update center and the publish
+ * We will scan the list of known symbol names in the update center and publish
  * that list to help people choose the symbol names wisely.
  *
  * <p>
@@ -40,8 +38,8 @@ import static java.lang.annotation.RetentionPolicy.*;
  * To look up a component by its symbol, see the documentation of the symbol plugin.
  */
 @Indexed
-@Retention(RUNTIME)
-@Target({TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 @Documented
 public @interface Symbol {
     String[] value();
